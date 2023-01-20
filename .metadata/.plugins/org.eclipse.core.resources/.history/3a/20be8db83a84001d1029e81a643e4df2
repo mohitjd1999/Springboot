@@ -1,0 +1,31 @@
+package com.jpa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.jpa.dao.UserRepository;
+import com.jpa.entities.Users;
+
+@SpringBootApplication
+public class Secondstsproject1Application {
+
+	public static void main(String[] args) {
+		ApplicationContext context = SpringApplication.run(Secondstsproject1Application.class, args);
+	
+		UserRepository userRepository= context.getBean(UserRepository.class);
+		
+		Users users = new Users();
+		
+		users.setName("Akhil Jindal");
+		users.setCity("New Delhi");
+		users.setStatus("I am Python Programmer");
+		
+		Users user1 = userRepository.save(users);
+		
+		System.out.println(user1);
+		
+	
+	}
+
+}
